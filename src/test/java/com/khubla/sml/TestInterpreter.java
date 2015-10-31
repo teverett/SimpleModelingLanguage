@@ -11,28 +11,28 @@ import org.testng.annotations.Test;
 import com.khubla.sml.antlr.smlParser.ModelContext;
 
 public class TestInterpreter {
-   @Test(enabled = true)
-   public void testExampleModels() {
+   private void doTest(String name) {
       try {
-         List<File> files = FileUtil.getAllFiles("src/test/resources/");
-         if (null != files) {
-            for (File file : files) {
-               doTest(file.getAbsolutePath());
-            }
-         }
-      } catch (Exception e) {
+         System.out.println("Parsing: " + name);
+         final InputStream is = new FileInputStream(name);
+         final ModelContext modelContext = SMLInterpreter.parse(is);
+         Assert.assertNotNull(modelContext);
+      } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();
       }
    }
 
-   private void doTest(String name) {
+   @Test(enabled = true)
+   public void testExampleModels() {
       try {
-         System.out.println("Parsing: " + name);
-         InputStream is = new FileInputStream(name);
-         ModelContext modelContext = SMLInterpreter.parse(is);
-         Assert.assertNotNull(modelContext);
-      } catch (Exception e) {
+         final List<File> files = FileUtil.getAllFiles("src/test/resources/");
+         if (null != files) {
+            for (final File file : files) {
+               doTest(file.getAbsolutePath());
+            }
+         }
+      } catch (final Exception e) {
          e.printStackTrace();
          Assert.fail();
       }
