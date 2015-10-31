@@ -1,0 +1,20 @@
+model tge.vsource;
+
+variables:
+
+#
+# vars
+# 
+	public i1;
+	public i2;
+	public v1;
+	public v2;
+	public dV;
+
+#
+# Equations
+#
+equations:
+
+	currentBalance:=i2-i1;
+	voltageBalance:=(v2-v1)-dV;

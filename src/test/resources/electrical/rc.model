@@ -1,0 +1,50 @@
+model tge.rc1;
+
+#
+# A simple RC model 
+#
+#
+#      ------- R1 ---- C2 --
+#      |                   |
+#      V                   |
+#      |-------------------|
+#
+#
+#
+
+imports:
+
+	tge.resistor;
+	tge.capacitor;
+	tge.vsource;
+
+variables:
+
+	# declare a resistor instance called "R1"
+	component tge.resistor R1;
+
+	# declare a capacitor instance called "C1"
+	component tge.capacitor C1;
+
+	# declare a vsource instance called "V"
+	component tge.vsource V;
+
+equations:
+
+	# set dV of tge.vsource to 5V
+	voltage:=D.dV-5;
+
+	# set R of tge.resistor to 10 ohms
+	resistance:=R1.R-10;
+
+	# set C of tge.capacitor to 100 F
+	resistance:=C1.C-100;
+
+	# connect the +ve end of V to R1
+	positiveConnection:= V.v1-R1.v1;
+
+    # connect the resistor to the capacitor
+    resistors:=R1.v2-C1.v1;
+
+	# connect the -ve end of V
+	groundConnection:= V.v2-R2.v2;

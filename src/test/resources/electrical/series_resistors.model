@@ -1,0 +1,49 @@
+model tge.rc1;
+
+#
+# A simple model with a voltage source and 2 resistors in series
+#
+#
+#      ------- R1 ---- R2 --
+#      |                   |
+#      V                   |
+#      |-------------------|
+#
+#
+#
+
+imports:
+
+	tge.resistor;
+	tge.vsource;
+
+variables:
+
+	# declare a resistor instance called "R1"
+	component tge.resistor R1;
+
+	# declare a resistor instance called "R2"
+	component tge.resistor R2;
+
+	# declare a vsource instance called "V"
+	component tge.vsource V;
+
+equations:
+
+	# set dV of tge.vsource to 5V
+	voltage:=D.dV-5;
+
+	# set R of tge.resistor to 10 ohms
+	resistance:=R1.R-10;
+
+	# set R of tge.resistor to 15 ohms
+	resistance:=R2.R-15;
+
+	# connect the +ve end of V to R1
+	positiveConnection:= V.v1-R1.v1;
+
+    # connect the resistors
+    resistors:=R1.v2-R2.v1;
+
+	# connect the -ve end of V
+	groundConnection:= V.v2-R2.v2;

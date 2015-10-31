@@ -1,0 +1,22 @@
+model tge.spring;
+
+#
+# vars
+# 
+variables:
+
+    # spring constant
+	public k;
+    # force difference
+    public df;
+    # distance difference
+    public x;
+
+#
+# Equations
+#
+
+equations:
+
+	df:= k*x;
+

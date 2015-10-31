@@ -1,0 +1,40 @@
+model tge.simpleR;
+
+#
+# A simple model with a voltage source and resistor
+#
+#
+#      ------- R1 ------
+#      |               |
+#      V               |
+#      |---------------|
+#
+#
+#
+
+imports:
+
+	tge.resistor;
+	tge.vsource;
+
+variables:
+
+	# declare a resistor instance called "r1"
+	component tge.resistor R1;
+
+	# declare a vsource instance called "V"
+	component tge.vsource V;
+
+equations:
+
+	# set dV of tge.vsource to 5V
+	voltage:=D.dV-5;
+
+	# set R of tge.resistor to 10 ohms
+	resistance:=R1.R-10;
+
+	# connect the +ve end
+	positiveConnection:= V.v1-R1.v1;
+
+	# connect the -ve end
+	groundConnection:= V.v2-R1.v2;

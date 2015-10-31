@@ -1,0 +1,24 @@
+model tge.pendulum;
+
+#
+# vars
+# 
+variables:
+
+    # length
+	public L;
+    # gravity
+    public g;
+    # pi
+    public pi;
+    # period
+    public T;
+
+#
+# Equations
+#
+
+equations:
+	g:=9.21;
+	pi:=3.141;
+	T:=2*pi*(L/g)^0.5;

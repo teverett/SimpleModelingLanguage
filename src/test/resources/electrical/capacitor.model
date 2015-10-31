@@ -1,0 +1,27 @@
+model tge.capacitor;
+
+#
+# vars
+# 
+variables:
+
+	public i1;
+	public i2;
+	public v1;
+	public v2;
+	C;
+	private V;
+	private I;
+	public t;
+
+#
+# Equations
+#
+
+equations:
+
+	voltageBalance:=(v2-v1)-V;
+	currentBalance:=i2-i1;
+	currentBalance2:=I-i1;
+
+    der(V,t,1) := I/C;

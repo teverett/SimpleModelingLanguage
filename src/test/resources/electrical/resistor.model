@@ -1,0 +1,22 @@
+model tge.resistor;
+
+#
+# vars
+# 
+variables:
+
+	public i1;
+	public i2;
+	public v1;
+	public v2;
+	R;
+
+#
+# Equations
+#
+
+equations:
+
+	currentBalance:= i2-i1;
+	voltageBalance:= (v2-v1)-i1*R;
+

@@ -1,0 +1,22 @@
+model tge.myLine;
+
+#
+# Variable declarations
+# these result in declaration of 3 ClientRealSimVarIFace objects to the solver and setting 3 initial values
+#
+variables:
+
+	y;
+	m;
+	x;
+
+#
+# Equation declarations.  Each of these results in an equation object which binds the declared variables above
+#
+# In this case we are declaring an equation named "f" with the formula "mx"
+#
+equations:
+
+	line:=y-m*x;
+	der(line,y,1):=0;
+
