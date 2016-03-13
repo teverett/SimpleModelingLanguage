@@ -1,0 +1,32 @@
+model tge.depreciation;
+#
+# modeling the replacement time of a fixed value asset with a different fixed value
+# asset which has lower operating costs
+# 
+variables:
+
+    # original asset capital cost
+	public Acc;
+	# original asset operating cost
+	public Aoc;
+    # replacement asset capital cost
+	public Bcc;
+	# replacement asset operating cost
+	public Boc;
+    # time
+    public t;
+    # depreciation period
+    public dp;
+    # depreciated value of orginal asset
+    public dv;
+
+equations:
+
+	# 3 year depreciation period
+	dp:=3;
+	# depreciated value
+	dv:= Acc-(Acc / dp*12)*t;
+
+	# the point at which the savings in operating costs equals the replacement cost
+	# plus the write-down of the remaining deprecitation
+	replacement:= (Aoc-Boc) - (Bcc + dv);
